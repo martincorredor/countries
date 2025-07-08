@@ -1,8 +1,39 @@
+"use client";
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import Header from './components/Header/Header';
+import SearchFilter from './components/SearchFilter/SearchFilter';
+import CountryCard from './components/CountryCard/CountryCard';
+
 
 export default function Home() {
+  const [countries, setCountries] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+
+  const URL = "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3"
+
+  console.log("countries: ", countries)
+  useEffect(() => {
+    axios.get(URL)
+      .then(response => {
+        setCountries(response.data);
+        setFiltered(response.data);
+      })
+      .catch(error => {
+        console.log('Error fetching countries:', error);
+      });
+  }, []);
+
+
   return (
-    <div>
-      Countries App
-    </div>
+    <main>
+      <Header/>
+      <SearchFilter countries={countries} setFiltered={setFiltered} />
+      <section className='grid'>
+        {filtered.map((country, index) => (
+          <CountryCard key={index} country={country} />
+        ))}
+      </section>
+    </main>
   );
 }
