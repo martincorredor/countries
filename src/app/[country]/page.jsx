@@ -1,5 +1,6 @@
 import axios from "axios";
 import Link from "next/link";
+import Header from '../components/Header/Header';
 
 export default async function CountryDetail({ params }) {
     console.log("params: ", params);
@@ -12,6 +13,7 @@ export default async function CountryDetail({ params }) {
 
   return (
     <div className="detail-container">
+      <Header />
       <Link href="/">← Back</Link>
 
       <div className="detail">
