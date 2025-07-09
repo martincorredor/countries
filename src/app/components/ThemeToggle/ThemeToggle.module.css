@@ -7,3 +7,11 @@
   font-weight: 600;
   color: inherit;
 }
+
+@media screen and (max-width: 768px) {
+  .toggle {
+    font-weight: 300;
+    font-size: 0.8rem;
+  }
+  
+}
