@@ -13,6 +13,11 @@
   justify-content: start;
   box-sizing: border-box;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.429);
+  cursor: pointer;
 }
 
 .cardImage {

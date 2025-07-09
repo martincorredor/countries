@@ -9,8 +9,7 @@
   position: relative;
   width: 30vw;
   max-width: 600px;
-  height: 50px;
-  margin-bottom: 20px;
+  height: 70px;
   box-sizing: border-box;
 }
   .icon {
@@ -32,6 +31,12 @@
   box-sizing: border-box;
   background-color: var(--color-elements);
   color: var(--color-input);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.search:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
 }
 
 .search::placeholder {
@@ -40,18 +45,28 @@
 
 
 .filter {
-  max-width: 600px;
+  max-width: 250px;
   width: 20vw;
-  height: 50px;
-  padding: 10px;
+  height: 70px;
+  padding: 10px 20px;
   border-radius: 5px;
   border: none;
   background-color: var(--color-elements);
   color: var(--color-text);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.filter:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+.filter:focus {
+  outline: none;
 }
 
 .filterOption {
   background-color: var(--color-bg);
   color: var(--color-text);
   border-radius: 0 0 10px 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
