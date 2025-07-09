@@ -2,6 +2,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import Header from '../components/Header/Header';
 import styles from './page.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default async function CountryDetail({ params }) {
   const countryName = decodeURIComponent(params.country);
@@ -21,69 +23,72 @@ export default async function CountryDetail({ params }) {
   }
 
   return (
-    <div className={styles.page}>
+    <div>
       <Header />
-      <Link href="/">
-        <div className={styles.goBack}>← Back</div>
-      </Link>
+      <div className={styles.pageContent}>
+        <Link href="/" className={styles.goBack}>
+          <FontAwesomeIcon icon={faArrowLeft} className={styles.icon} />
+          <span style={{ marginLeft: '8px' }}>Back</span>
+        </Link>
 
-      <div className={styles.countryDetailsContainer}>
-        <img
-          className={styles.countryFlag}
-          src={country.flags.png}
-          alt={`${country.name.common} flag`}
-        />
-        <div className={styles.countryInfo}>
-          <h2 className={styles.countryName}>{country.name.common}</h2>
-          <div className={styles.countryDetails}>
-            <div className={styles.countryDetailsLeft}>
-              <p>
-                <strong>Native Name:</strong>{' '}
-                {Object.values(country.name.nativeName || {})[0]?.common}
-              </p>
-              <p>
-                <strong>Population:</strong>{' '}
-                {country.population.toLocaleString()}
-              </p>
-              <p>
-                <strong>Region:</strong> {country.region}
-              </p>
-              <p>
-                <strong>Sub Region:</strong> {country.subregion}
-              </p>
-              <p>
-                <strong>Capital:</strong> {country.capital?.[0]}
-              </p>
-            </div>
-            <div className={styles.countryDetailsRight}>
-              <p>
-                <strong>Top Level Domain:</strong> {country.tld?.[0]}
-              </p>
-              <p>
-                <strong>Currencies:</strong>{' '}
-                {Object.values(country.currencies || {})
-                  .map((c) => c.name)
-                  .join(', ')}
-              </p>
-              <p>
-                <strong>Languages:</strong>{' '}
-                {Object.values(country.languages || {}).join(', ')}
-              </p>
-            </div>
-          </div>
-          <div className={styles.borderCountriesContainer}>
-            <p className={styles.borderCountriesLabel}>Border Countries:</p>
-            {borderCountries.length > 0 ? (
-              <div className={styles.borderCountries}>
-                {borderCountries.map((name) => (
-                  <div className={styles.borderCountry} key={name}>
-                    {name}
-                  </div>
-                ))}
+        <div className={styles.countryDetailsContainer}>
+          <img
+            className={styles.countryFlag}
+            src={country.flags.png}
+            alt={`${country.name.common} flag`}
+          />
+          <div className={styles.countryInfo}>
+            <h2 className={styles.countryName}>{country.name.common}</h2>
+            <div className={styles.countryDetails}>
+              <div className={styles.countryDetailsLeft}>
+                <p>
+                  <strong>Native Name:</strong>{' '}
+                  {Object.values(country.name.nativeName || {})[0]?.common}
+                </p>
+                <p>
+                  <strong>Population:</strong>{' '}
+                  {country.population.toLocaleString()}
+                </p>
+                <p>
+                  <strong>Region:</strong> {country.region}
+                </p>
+                <p>
+                  <strong>Sub Region:</strong> {country.subregion}
+                </p>
+                <p>
+                  <strong>Capital:</strong> {country.capital?.[0]}
+                </p>
               </div>
-            ) : (
-              <p>No border countries</p>
-            )}
+              <div className={styles.countryDetailsRight}>
+                <p>
+                  <strong>Top Level Domain:</strong> {country.tld?.[0]}
+                </p>
+                <p>
+                  <strong>Currencies:</strong>{' '}
+                  {Object.values(country.currencies || {})
+                    .map((c) => c.name)
+                    .join(', ')}
+                </p>
+                <p>
+                  <strong>Languages:</strong>{' '}
+                  {Object.values(country.languages || {}).join(', ')}
+                </p>
+              </div>
+            </div>
+            <div className={styles.borderCountriesContainer}>
+              <p className={styles.borderCountriesLabel}>Border Countries:</p>
+              {borderCountries.length > 0 ? (
+                <div className={styles.borderCountries}>
+                  {borderCountries.map((name) => (
+                    <div className={styles.borderCountry} key={name}>
+                      {name}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No border countries</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
