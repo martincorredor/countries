@@ -53,4 +53,5 @@
 .filterOption {
   background-color: var(--color-bg);
   color: var(--color-text);
+  border-radius: 0 0 10px 10px;
 }

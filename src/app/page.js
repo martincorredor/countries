@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './components/Header/Header';
 import SearchFilter from './components/SearchFilter/SearchFilter';
 import CountryCard from './components/CountryCard/CountryCard';
+import styles from './page.module.css';
 
 
 export default function Home() {
@@ -28,7 +29,7 @@ export default function Home() {
     <main>
       <Header/>
       <SearchFilter countries={countries} setFiltered={setFiltered} />
-      <section className='grid'>
+      <section className={styles.countryList}>
         {filtered.map((country, index) => (
           <CountryCard key={index} country={country} />
         ))}
