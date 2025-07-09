@@ -12,7 +12,6 @@ export default function Home() {
 
   const URL = "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3"
 
-  console.log("countries: ", countries)
   useEffect(() => {
     axios.get(URL)
       .then(response => {
