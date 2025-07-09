@@ -20,7 +20,7 @@ export default function Home() {
         setFiltered(response.data);
       })
       .catch(error => {
-        console.log('Error fetching countries:', error);
+        console.error('Error fetching countries:', error);
       });
   }, []);
 
